@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['34.229.124.104']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cassandra_engine',
+    'app1',
 ]
 
 MIDDLEWARE = [
