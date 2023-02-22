@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cassandra_engine',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +74,27 @@ WSGI_APPLICATION = 'demo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+DATABASES = {
+     'default': {
+         'ENGINE': 'django_cassandra_engine',
+         'NAME': 'demo_db',
+         'TEST_NAME': 'demo-test',
+         'HOST': 'localhost',
+         'OPTIONS': {
+             'replication': {
+                 'strategy_class': 'SimpleStrategy',
+                 'replication_factor': 1
+             }
+         }
+     }
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
